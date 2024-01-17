@@ -7,6 +7,13 @@
 </script>
 
 <div class="w-96 mx-auto mt-10">
+	<h1>Licks</h1>
+	<div>
+		Some tasty riffs to reuse in your projects. By <a href="https://nicholaschen.io"
+			>Nicholas Chen</a
+		>
+		<img alt="cool robotic guitar" src="./guitar.png" />
+	</div>
 	<BaseSelector
 		label="languages"
 		options={languages}
