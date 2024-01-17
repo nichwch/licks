@@ -1,0 +1,18 @@
+<script lang="ts">
+	import { clickOutside } from './clickOutside.js';
+
+	export let isShowing: boolean;
+	export let labelClasses: string = 'bg-red-300 hover:bg-red-400 transition-colors';
+	export let windowClasses: string = 'border border-black bg-white p-3 shadow';
+</script>
+
+<div class="inline-block relative" use:clickOutside on:click_outside>
+	<button on:click class="px-1 border border-black {labelClasses}">
+		<slot name="buttonContent" />
+	</button>
+	{#if isShowing}
+		<div class="absolute {windowClasses}">
+			<slot name="windowContent" />
+		</div>
+	{/if}
+</div>
