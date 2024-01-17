@@ -2,14 +2,20 @@
 	import LabelAndPopup from './BaseLabelAndPopup.svelte';
 
 	export let _class: string = '';
-	export let labelClasses: string = 'bg-red-300 hover:bg-red-400 transition-colors';
-	export let windowClasses: string = 'border border-black bg-white p-3 shadow';
+	export let addLabelClasses = '';
+	export let labelClasses: string | undefined = undefined;
+	export let addWindowClasses = '';
+	export let windowClasses: string | undefined = undefined;
 	let isShowing = false;
 </script>
 
 <LabelAndPopup
 	{_class}
 	{isShowing}
+	{addLabelClasses}
+	{labelClasses}
+	{addWindowClasses}
+	{windowClasses}
 	on:click_outside={() => (isShowing = false)}
 	on:click={() => (isShowing = !isShowing)}
 >

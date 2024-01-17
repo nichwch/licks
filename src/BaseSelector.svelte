@@ -6,14 +6,25 @@
 	export let selectedOptions: Set<string>;
 	export let isShowing: boolean;
 	export let _class: string = '';
-	export let labelClasses: string = 'bg-red-300 hover:bg-red-400 transition-colors';
-	export let windowClasses: string = 'block w-72  border border-black bg-white p-3 shadow';
+	export let addLabelClasses = '';
+	export let labelClasses: string | undefined = undefined;
+	export let addWindowClasses = '';
+	export let windowClasses: string | undefined = undefined;
 	export let optionClasses: string =
 		'px-1 mb-2 border border-black bg-red-200 hover:bg-red-300 transition-colors mr-3';
 	const dispatch = createEventDispatcher();
 </script>
 
-<LabelAndPopup {isShowing} {_class} {windowClasses} {labelClasses} on:click_outside on:click>
+<LabelAndPopup
+	{isShowing}
+	{_class}
+	{addWindowClasses}
+	{windowClasses}
+	{addLabelClasses}
+	{labelClasses}
+	on:click_outside
+	on:click
+>
 	<svelte:fragment slot="buttonContent">
 		{label}
 	</svelte:fragment>
