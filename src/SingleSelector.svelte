@@ -8,7 +8,7 @@
 	export let _class: string | undefined = undefined;
 	export let addLabelClasses: string | undefined = undefined;
 	export let labelClasses: string | undefined = undefined;
-	export let addWindowClasses: string = 'p-0';
+	export let addWindowClasses: string = '!p-0';
 	export let windowClasses: string | undefined = undefined;
 	export let optionClasses: string = 'w-full border-b border-b-black bg-red-200 hover:bg-red-300';
 	export let selectedOptionClasses: string | undefined = undefined;

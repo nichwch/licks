@@ -23,7 +23,7 @@
 	</div>
 	<img class="block mx-auto w-[36rem]" alt="cool robotic guitar" src="./guitar.png" />
 	<div class="w-96 mx-auto">
-		<div>
+		<div class="section">
 			<h1>A label that shows a popup when you click it.</h1>
 			<div class="flex flex-wrap">
 				<LabelAndPopup addWindowClasses="w-72">

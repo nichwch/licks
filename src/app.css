@@ -12,6 +12,6 @@ a:visited {
 
 @layer utilities {
 	.section {
-		margin-bottom: theme('spacing.3');
+		margin-bottom: theme('spacing.5');
 	}
 }
