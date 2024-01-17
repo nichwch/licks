@@ -14,4 +14,10 @@ a:visited {
 	.section {
 		margin-bottom: theme('spacing.5');
 	}
+
+	.box {
+		padding-left: theme('spacing.1');
+		padding-right: theme('spacing.1');
+		@apply border border-black;
+	}
 }

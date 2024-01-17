@@ -40,9 +40,13 @@
 	on:click_outside={() => (isShowing = false)}
 	on:optionClick={(event) => {
 		const { option } = event.detail;
-		if (selectedOptions.has(option)) selectedOptions = new Set();
-		else selectedOptions = new Set([option]);
+		if (selectedOptions.has(option)) {
+			selectedOptions = new Set();
+			dispatch('selectionChanged', { selectedOption: null });
+		} else {
+			selectedOptions = new Set([option]);
+			dispatch('selectionChanged', { selectedOption: option });
+		}
 		isShowing = false;
-		dispatch('selectionChanged', { selectedOption: option });
 	}}
 />

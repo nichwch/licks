@@ -63,10 +63,12 @@
 		</div>
 		<div class="section">
 			<h1>A selector for selecting multiple things.</h1>
-			<div>
+			<div class="mb-2">
 				Selected languages:
 				{#each selectedLanguages as lang}
-					{lang}
+					<div class="inline-block box bg-red-200 ml-2">
+						{lang}
+					</div>
 				{/each}
 			</div>
 			<MultiSelector
@@ -79,7 +81,7 @@
 		<div class="section">
 			<h1>A selector for selecting a single thing.</h1>
 			<div>
-				Lunch for today:{selectedLunch}
+				Lunch for today: {selectedLunch ? selectedLunch : 'TBA'}
 			</div>
 			<SingleSelector
 				label="lunch options"
