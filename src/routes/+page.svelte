@@ -1,10 +1,14 @@
-<script>
-	import Selector from '../Selector.svelte';
+<script lang="ts">
+	import MultiSelector from '../MultiSelector.svelte';
+	import SingleSelector from '../SingleSelector.svelte';
 	import LabelAndPopup from '../LabelAndPopup.svelte';
+	import { fromJSON } from 'postcss';
 
 	const languages = ['javascript', 'rust', 'go', 'python', 'zig'];
-	let selectedLanguages = new Set();
-	let showingLanguages = false;
+	let selectedLanguages: string[] = [];
+
+	const lunchOptions = ['burger', 'spicy noodles', 'sandwich', 'tacos'];
+	let selectedLunch: string | null = null;
 </script>
 
 <div class="w-full mt-10">
@@ -22,17 +26,25 @@
 		<div>
 			<h1>A label that shows a popup when you click it.</h1>
 			<div class="flex flex-wrap">
-				<LabelAndPopup>
+				<LabelAndPopup addWindowClasses="w-72">
 					<svelte:fragment slot="buttonContent">more info</svelte:fragment>
 					<svelte:fragment slot="windowContent">here is more information</svelte:fragment>
 				</LabelAndPopup>
-				<LabelAndPopup _class="ml-3" addLabelClasses="!bg-green-300 hover:!bg-green-400">
+				<LabelAndPopup
+					_class="ml-3"
+					addWindowClasses="w-72"
+					addLabelClasses="!bg-green-300 hover:!bg-green-400"
+				>
 					<svelte:fragment slot="buttonContent">even more info</svelte:fragment>
 					<svelte:fragment slot="windowContent"
 						>the mitochondria is the powerhouse of the cell
 					</svelte:fragment>
 				</LabelAndPopup>
-				<LabelAndPopup _class="ml-3" addLabelClasses="!bg-blue-400 hover:!bg-blue-500">
+				<LabelAndPopup
+					_class="ml-3"
+					addWindowClasses="w-72"
+					addLabelClasses="!bg-blue-400 hover:!bg-blue-500"
+				>
 					<svelte:fragment slot="buttonContent">yet even more info</svelte:fragment>
 					<svelte:fragment slot="windowContent"
 						>the
@@ -50,18 +62,29 @@
 			</div>
 		</div>
 		<div class="section">
-			<h1>A selector for things.</h1>
-			<Selector
+			<h1>A selector for selecting multiple things.</h1>
+			<div>
+				Selected languages:
+				{#each selectedLanguages as lang}
+					{lang}
+				{/each}
+			</div>
+			<MultiSelector
 				label="languages"
 				options={languages}
-				selectedOptions={selectedLanguages}
-				on:optionClick={(event) => {
-					const { option } = event.detail;
-					console.log(event.detail);
-					if (selectedLanguages.has(option)) selectedLanguages.delete(option);
-					else selectedLanguages.add(option);
-					selectedLanguages = selectedLanguages;
-				}}
+				on:selectionChanged={(event) =>
+					(selectedLanguages = Array.from(event.detail.selectedOptions))}
+			/>
+		</div>
+		<div class="section">
+			<h1>A selector for selecting a single thing.</h1>
+			<div>
+				Lunch for today:{selectedLunch}
+			</div>
+			<SingleSelector
+				label="lunch options"
+				options={lunchOptions}
+				on:selectionChanged={(event) => (selectedLunch = event.detail.selectedOption)}
 			/>
 		</div>
 	</div>

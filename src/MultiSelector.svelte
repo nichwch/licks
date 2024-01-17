@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import BaseSelector from './BaseSelector.svelte';
 	export let label: string;
 	export let options: string[];
-	export let selectedOptions: Set<string>;
+	export let initiallySelected: string[] = [];
 
 	export let _class: string | undefined = undefined;
 	export let addLabelClasses: string | undefined = undefined;
@@ -13,6 +14,8 @@
 	export let selectedOptionClasses: string | undefined = undefined;
 
 	let isShowing = false;
+	let selectedOptions = new Set(initiallySelected);
+	const dispatch = createEventDispatcher();
 </script>
 
 <BaseSelector
@@ -29,5 +32,12 @@
 	{selectedOptionClasses}
 	on:click={() => (isShowing = !isShowing)}
 	on:click_outside={() => (isShowing = false)}
-	on:optionClick
+	on:optionClick={(event) => {
+		const { option } = event.detail;
+		console.log(event.detail);
+		if (selectedOptions.has(option)) selectedOptions.delete(option);
+		else selectedOptions.add(option);
+		selectedOptions = selectedOptions;
+		dispatch('selectionChanged', { selectedOptions });
+	}}
 />
