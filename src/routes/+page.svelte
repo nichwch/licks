@@ -26,13 +26,13 @@
 					<svelte:fragment slot="buttonContent">more info</svelte:fragment>
 					<svelte:fragment slot="windowContent">here is more information</svelte:fragment>
 				</LabelAndPopup>
-				<LabelAndPopup _class="ml-3" addLabelClasses="bg-green-300 hover:bg-green-400">
+				<LabelAndPopup _class="ml-3" addLabelClasses="!bg-green-300 hover:!bg-green-400">
 					<svelte:fragment slot="buttonContent">even more info</svelte:fragment>
 					<svelte:fragment slot="windowContent"
 						>the mitochondria is the powerhouse of the cell
 					</svelte:fragment>
 				</LabelAndPopup>
-				<LabelAndPopup _class="ml-3" addLabelClasses="bg-blue-400 hover:bg-blue-500">
+				<LabelAndPopup _class="ml-3" addLabelClasses="!bg-blue-400 hover:!bg-blue-500">
 					<svelte:fragment slot="buttonContent">yet even more info</svelte:fragment>
 					<svelte:fragment slot="windowContent"
 						>the
