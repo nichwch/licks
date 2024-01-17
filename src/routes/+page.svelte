@@ -19,7 +19,7 @@
 	</div>
 	<img class="block mx-auto w-[36rem]" alt="cool robotic guitar" src="./guitar.png" />
 	<div class="w-96 mx-auto">
-		<div class="section">
+		<div>
 			<h1>A label that shows a popup when you click it.</h1>
 			<div class="flex flex-wrap">
 				<LabelAndPopup>
@@ -36,7 +36,7 @@
 					<svelte:fragment slot="buttonContent">yet even more info</svelte:fragment>
 					<svelte:fragment slot="windowContent"
 						>the
-						<LabelAndPopup _class="" addLabelClasses="bg-yellow-400 hover:bg-yellow-500">
+						<LabelAndPopup addLabelClasses="bg-yellow-400 hover:bg-yellow-500">
 							<svelte:fragment slot="buttonContent">mitochondria</svelte:fragment>
 							<svelte:fragment slot="windowContent"
 								>the mitochondria is the powerhouse of the cell. This is a bad UX pattern and you
