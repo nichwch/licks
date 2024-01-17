@@ -1,5 +1,5 @@
 <script>
-	import BaseSelector from '../BaseSelector.svelte';
+	import Selector from '../Selector.svelte';
 	import LabelAndPopup from '../LabelAndPopup.svelte';
 
 	const languages = ['javascript', 'rust', 'go', 'python', 'zig'];
@@ -51,23 +51,16 @@
 		</div>
 		<div class="section">
 			<h1>A selector for things.</h1>
-			<BaseSelector
+			<Selector
 				label="languages"
 				options={languages}
 				selectedOptions={selectedLanguages}
-				isShowing={showingLanguages}
-				on:click={() => {
-					showingLanguages = !showingLanguages;
-				}}
 				on:optionClick={(event) => {
 					const { option } = event.detail;
 					console.log(event.detail);
 					if (selectedLanguages.has(option)) selectedLanguages.delete(option);
 					else selectedLanguages.add(option);
 					selectedLanguages = selectedLanguages;
-				}}
-				on:click_outside={() => {
-					showingLanguages = false;
 				}}
 			/>
 		</div>
