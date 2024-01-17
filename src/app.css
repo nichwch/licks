@@ -10,9 +10,19 @@ a:visited {
 	color: theme('colors.purple.500');
 }
 
+h1 {
+	@apply text-4xl mb-1.5;
+}
+h2 {
+	@apply text-2xl mb-1.5;
+}
+h3 {
+	@apply text-xl mb-1.5;
+}
+
 @layer utilities {
 	.section {
-		margin-bottom: theme('spacing.5');
+		margin-bottom: theme('spacing.10');
 	}
 
 	.box {

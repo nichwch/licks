@@ -24,7 +24,7 @@
 	<img class="block mx-auto w-[36rem]" alt="cool robotic guitar" src="./guitar.png" />
 	<div class="w-96 mx-auto">
 		<div class="section">
-			<h1>A label that shows a popup when you click it.</h1>
+			<h3>A label that shows a popup when you click it.</h3>
 			<div class="flex flex-wrap">
 				<LabelAndPopup addWindowClasses="w-72">
 					<svelte:fragment slot="buttonContent">more info</svelte:fragment>
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		<div class="section">
-			<h1>A selector for selecting multiple things.</h1>
+			<h3>A selector for selecting multiple things.</h3>
 			<div class="mb-2">
 				Selected languages:
 				{#each selectedLanguages as lang}
@@ -79,7 +79,7 @@
 			/>
 		</div>
 		<div class="section">
-			<h1>A selector for selecting a single thing.</h1>
+			<h3>A selector for selecting a single thing.</h3>
 			<div>
 				Lunch for today: {selectedLunch ? selectedLunch : 'TBA'}
 			</div>
