@@ -1,43 +1,23 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import BaseSelector from './BaseSelector.svelte';
-	export let label: string;
+
 	export let options: string[];
-	export let initiallySelected: string[] = [];
-
-	export let _class: string | undefined = undefined;
-	export let addLabelClasses: string | undefined = undefined;
-	export let labelClasses: string | undefined = undefined;
-	export let addWindowClasses: string | undefined = undefined;
-	export let windowClasses: string | undefined = undefined;
-	export let optionClasses: string | undefined = undefined;
-	export let selectedOptionClasses: string | undefined = undefined;
-
-	let isShowing = false;
-	let selectedOptions = new Set(initiallySelected);
+	export let selectedOptions: Set<string>;
+	export let optionClasses: string =
+		'px-1 mb-2 border border-black bg-red-200 hover:bg-red-300 transition-colors mr-3';
+	export let selectedOptionClasses: string = '!bg-red-400 hover:!bg-red-400';
 	const dispatch = createEventDispatcher();
 </script>
 
-<BaseSelector
-	{label}
-	{isShowing}
-	{options}
-	{selectedOptions}
-	{_class}
-	{addLabelClasses}
-	{labelClasses}
-	{addWindowClasses}
-	{windowClasses}
-	{optionClasses}
-	{selectedOptionClasses}
-	on:click={() => (isShowing = !isShowing)}
-	on:click_outside={() => (isShowing = false)}
-	on:optionClick={(event) => {
-		const { option } = event.detail;
-		console.log(event.detail);
-		if (selectedOptions.has(option)) selectedOptions.delete(option);
-		else selectedOptions.add(option);
-		selectedOptions = selectedOptions;
-		dispatch('selectionChanged', { selectedOptions });
-	}}
-/>
+{#each options as option}<button
+		class="{optionClasses} {selectedOptions.has(option) ? selectedOptionClasses : ''}"
+		on:click={() => {
+			if (selectedOptions.has(option)) {
+				selectedOptions.delete(option);
+			} else {
+				selectedOptions.add(option);
+			}
+			selectedOptions = selectedOptions;
+			dispatch('selectionChanged', { selectedOptions });
+		}}>{option}</button
+	>{/each}

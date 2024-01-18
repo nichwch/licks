@@ -1,17 +1,23 @@
 <script lang="ts">
-	import MultiSelector from '../MultiSelector.svelte';
-	import SingleSelector from '../SingleSelector.svelte';
+	import SingleSelectorPopup from '../SingleSelectorPopup.svelte';
+	import MultiSelectorPopup from '../MultiSelectorPopup.svelte';
 	import LabelAndPopup from '../LabelAndPopup.svelte';
-	import { fromJSON } from 'postcss';
+	import MultiSelector from '../MultiSelector.svelte';
 
 	const languages = ['javascript', 'rust', 'go', 'python', 'zig'];
-	let selectedLanguages: string[] = [];
+	let selectedLanguages: Set<string> = new Set();
 
 	const lunchOptions = ['burger', 'spicy noodles', 'sandwich', 'tacos'];
 	let selectedLunch: string | null = null;
+
+	const tags = ['technical', 'social', 'politics', 'music', 'art', 'philosophy'];
+	let selectedTags: Set<string> = new Set();
+
+	const contentTypes = ['text', 'image', 'video'];
+	let selectedContentType: string | null = null;
 </script>
 
-<div class="w-full mt-10">
+<div class="w-full mt-10 mb-36">
 	<div class="w-96 mx-auto">
 		<h1>Licks</h1>
 		<div class="section">
@@ -24,7 +30,7 @@
 	<img class="block mx-auto w-[36rem]" alt="cool robotic guitar" src="./guitar.png" />
 	<div class="w-96 mx-auto">
 		<div class="section">
-			<h3>A label that shows a popup when you click it.</h3>
+			<h3>A label that shows a popup when you click it</h3>
 			<div class="flex flex-wrap">
 				<LabelAndPopup addWindowClasses="w-72">
 					<svelte:fragment slot="buttonContent">more info</svelte:fragment>
@@ -62,7 +68,7 @@
 			</div>
 		</div>
 		<div class="section">
-			<h3>A selector for selecting multiple things.</h3>
+			<h3>A selector for selecting multiple things</h3>
 			<div class="mb-2">
 				Selected languages:
 				{#each selectedLanguages as lang}
@@ -71,23 +77,58 @@
 					</div>
 				{/each}
 			</div>
-			<MultiSelector
+			<div class="p-1.5 border border-black">
+				<MultiSelector options={languages} bind:selectedOptions={selectedLanguages} />
+			</div>
+		</div>
+		<div class="section">
+			<h3>A selector for selecting multiple things, in a popup</h3>
+			<div class="mb-2">
+				Selected languages:
+				{#each selectedLanguages as lang}
+					<div class="inline-block box bg-red-200 ml-2">
+						{lang}
+					</div>
+				{/each}
+			</div>
+			<MultiSelectorPopup
 				label="languages"
 				options={languages}
-				on:selectionChanged={(event) =>
-					(selectedLanguages = Array.from(event.detail.selectedOptions))}
+				bind:selectedOptions={selectedLanguages}
 			/>
 		</div>
 		<div class="section">
-			<h3>A selector for selecting a single thing.</h3>
+			<h3>A selector for selecting a single thing</h3>
 			<div>
 				Lunch for today: {selectedLunch ? selectedLunch : 'TBA'}
 			</div>
-			<SingleSelector
+			<SingleSelectorPopup
 				label="lunch options"
 				options={lunchOptions}
-				on:selectionChanged={(event) => (selectedLunch = event.detail.selectedOption)}
+				bind:selection={selectedLunch}
 			/>
+		</div>
+		<div class="section">
+			<h3>Composed together</h3>
+			<LabelAndPopup addWindowClasses="w-72">
+				<svelte:fragment slot="buttonContent">filters</svelte:fragment>
+				<svelte:fragment slot="windowContent">
+					<div class="flex">
+						<MultiSelectorPopup label="tags" options={tags} bind:selectedOptions={selectedTags} />
+						<SingleSelectorPopup
+							_class="ml-3"
+							label="content type"
+							options={contentTypes}
+							bind:selection={selectedContentType}
+						/>
+					</div>
+				</svelte:fragment>
+			</LabelAndPopup>
+			<!-- <div>
+				Showing content tagged {#each Array.from(selectedTags) as tag}
+					<div class="box inline-block ml-2">{tag}</div>
+				{/each} that is in {selectedContentType} form
+			</div> -->
 		</div>
 	</div>
 </div>

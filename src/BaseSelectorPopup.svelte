@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import LabelAndPopup from './BaseLabelAndPopup.svelte';
+
 	export let label: string;
 	export let options: string[];
 	export let selectedOptions: Set<string>;

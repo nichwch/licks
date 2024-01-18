@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import BaseSelector from './BaseSelector.svelte';
+	import BaseSelector from './BaseSelectorPopup.svelte';
 	export let label: string;
 	export let options: string[];
-	export let initialSelection: string | undefined = undefined;
+	export let selection: string | undefined | null = undefined;
 
 	export let _class: string | undefined = undefined;
 	export let addLabelClasses: string | undefined = undefined;
@@ -15,7 +15,7 @@
 	export let showChoiceInLabel: boolean = true;
 
 	let isShowing = false;
-	let selectedOptions: Set<string> = initialSelection ? new Set([initialSelection]) : new Set();
+	$: selectedOptions = selection ? new Set([selection]) : (new Set() as Set<string>);
 	$: computedLabel = showChoiceInLabel
 		? selectedOptions.size > 0
 			? `selected: ${Array.from(selectedOptions)[0]}`
@@ -41,9 +41,10 @@
 	on:optionClick={(event) => {
 		const { option } = event.detail;
 		if (selectedOptions.has(option)) {
-			selectedOptions = new Set();
+			selection = null;
 			dispatch('selectionChanged', { selectedOption: null });
 		} else {
+			selection = option;
 			selectedOptions = new Set([option]);
 			dispatch('selectionChanged', { selectedOption: option });
 		}
