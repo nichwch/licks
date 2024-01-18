@@ -72,7 +72,7 @@
 			<div class="mb-2">
 				Selected languages:
 				{#each selectedLanguages as lang}
-					<div class="inline-block box bg-red-200 ml-2">
+					<div class="inline-block box ml-2">
 						{lang}
 					</div>
 				{/each}
@@ -86,7 +86,7 @@
 			<div class="mb-2">
 				Selected languages:
 				{#each selectedLanguages as lang}
-					<div class="inline-block box bg-red-200 ml-2">
+					<div class="inline-block box ml-2">
 						{lang}
 					</div>
 				{/each}

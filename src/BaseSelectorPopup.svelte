@@ -12,7 +12,7 @@
 	export let addWindowClasses = '';
 	export let windowClasses: string | undefined = undefined;
 	export let optionClasses: string =
-		'px-1 mb-2 border border-black bg-red-200 hover:bg-red-300 transition-colors mr-3';
+		'px-1 border border-black bg-red-200 hover:bg-red-300 transition-colors ';
 	export let selectedOptionClasses: string = '!bg-red-400 hover:!bg-red-400';
 	const dispatch = createEventDispatcher();
 </script>

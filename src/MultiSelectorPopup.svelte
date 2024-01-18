@@ -7,7 +7,7 @@
 	export let _class: string | undefined = undefined;
 	export let addLabelClasses: string | undefined = undefined;
 	export let labelClasses: string | undefined = undefined;
-	export let addWindowClasses: string = '!w-72';
+	export let addWindowClasses: string = '!w-72 flex flex-wrap gap-3';
 	export let windowClasses: string | undefined = undefined;
 	export let optionClasses: string | undefined = undefined;
 	export let selectedOptionClasses: string | undefined = undefined;
