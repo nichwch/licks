@@ -1,8 +1,8 @@
 <script lang="ts">
-	import SingleSelectorPopup from '../SingleSelectorPopup.svelte';
-	import MultiSelectorPopup from '../MultiSelectorPopup.svelte';
-	import LabelAndPopup from '../LabelAndPopup.svelte';
-	import MultiSelector from '../MultiSelector.svelte';
+	import SingleSelectorPopup from '$lib/SingleSelectorPopup.svelte';
+	import MultiSelectorPopup from '$lib/MultiSelectorPopup.svelte';
+	import LabelAndPopup from '$lib/LabelAndPopup.svelte';
+	import MultiSelector from '$lib/MultiSelector.svelte';
 
 	const languages = ['javascript', 'rust', 'go', 'python', 'zig'];
 	let selectedLanguages: Set<string> = new Set();

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import BaseSelector from './BaseSelectorPopup.svelte';
+	import BaseSelectorPopup from './BaseSelectorPopup.svelte';
 	export let label: string;
 	export let options: string[];
 	export let selection: string | undefined | null = undefined;
@@ -11,6 +11,7 @@
 	export let addWindowClasses: string = '!p-0';
 	export let windowClasses: string | undefined = undefined;
 	export let optionClasses: string = 'w-full border-b border-b-black bg-red-200 hover:bg-red-300';
+	export let addOptionClasses: string | undefined = undefined;
 	export let selectedOptionClasses: string | undefined = undefined;
 	export let showChoiceInLabel: boolean = true;
 
@@ -24,7 +25,7 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<BaseSelector
+<BaseSelectorPopup
 	label={computedLabel}
 	{isShowing}
 	{options}
@@ -35,6 +36,7 @@
 	{addWindowClasses}
 	{windowClasses}
 	{optionClasses}
+	{addOptionClasses}
 	{selectedOptionClasses}
 	on:click={() => (isShowing = !isShowing)}
 	on:click_outside={() => (isShowing = false)}

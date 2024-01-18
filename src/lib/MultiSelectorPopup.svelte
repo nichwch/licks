@@ -10,6 +10,7 @@
 	export let addWindowClasses: string = '!w-72 flex flex-wrap gap-3';
 	export let windowClasses: string | undefined = undefined;
 	export let optionClasses: string | undefined = undefined;
+	export let addOptionClasses: string | undefined = undefined;
 	export let selectedOptionClasses: string | undefined = undefined;
 
 	let isShowing = false;
@@ -27,6 +28,7 @@
 	{addWindowClasses}
 	{windowClasses}
 	{optionClasses}
+	{addOptionClasses}
 	{selectedOptionClasses}
 	on:click={() => (isShowing = !isShowing)}
 	on:click_outside={() => (isShowing = false)}
