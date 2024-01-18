@@ -24,6 +24,9 @@
 			Some tasty riffs to reuse in your projects. By riffs, I mean Svelte components styled with
 			TailwindCSS.
 		</div>
+
+		<button class="section font-mono bg-gray-200 rounded-sm px-1 inline-block">npm i licks</button>
+
 		<div>By <a href="https://nicholaschen.io">Nicholas Chen</a></div>
 		<div><a href="https://github.com/nichwch/licks">[github]</a></div>
 	</div>
