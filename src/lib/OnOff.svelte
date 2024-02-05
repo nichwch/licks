@@ -4,7 +4,7 @@
 
 <button
 	on:click={() => (on = !on)}
-	class:bg-white={!on}
+	class:bg-gray-400={!on}
 	class:bg-green-500={on}
 	class=" box-content p-0 inline-flex w-7 h-5 border border-black transition-colors"
 >
