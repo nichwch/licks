@@ -3,6 +3,7 @@
 	import MultiSelectorPopup from '$lib/MultiSelectorPopup.svelte';
 	import LabelAndPopup from '$lib/LabelAndPopup.svelte';
 	import MultiSelector from '$lib/MultiSelector.svelte';
+	import OnOff from '../lib/OnOff.svelte';
 
 	const languages = ['javascript', 'rust', 'go', 'python', 'zig'];
 	let selectedLanguages: Set<string> = new Set();
@@ -130,6 +131,10 @@
 					<div class="box inline-block ml-2">{tag}</div>
 				{/each} that is in {selectedContentType} form
 			</div> -->
+		</div>
+		<div class="section">
+			<h3>A little toggle</h3>
+			<OnOff />
 		</div>
 	</div>
 </div>
