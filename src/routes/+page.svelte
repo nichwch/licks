@@ -4,6 +4,7 @@
 	import LabelAndPopup from '$lib/LabelAndPopup.svelte';
 	import MultiSelector from '$lib/MultiSelector.svelte';
 	import OnOff from '../lib/OnOff.svelte';
+	import ModalDemo from './ModalDemo.svelte';
 
 	const languages = ['javascript', 'rust', 'go', 'python', 'zig'];
 	let selectedLanguages: Set<string> = new Set();
@@ -136,5 +137,6 @@
 			<h3>A little toggle</h3>
 			<OnOff />
 		</div>
+		<ModalDemo />
 	</div>
 </div>

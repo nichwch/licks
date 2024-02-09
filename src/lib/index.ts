@@ -4,6 +4,7 @@ import LabelAndPopup from './LabelAndPopup.svelte';
 import MultiSelector from './MultiSelector.svelte';
 import MultiSelectorPopup from './MultiSelectorPopup.svelte';
 import SingleSelectorPopup from './SingleSelectorPopup.svelte';
+import Modal from './Modal.svelte';
 // Reexport your entry components here
 
 export {
@@ -12,5 +13,6 @@ export {
 	LabelAndPopup,
 	MultiSelector,
 	MultiSelectorPopup,
-	SingleSelectorPopup
+	SingleSelectorPopup,
+	Modal
 };
